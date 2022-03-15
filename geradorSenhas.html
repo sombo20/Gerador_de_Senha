@@ -1,0 +1,67 @@
+<HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+function valoresAleatorios(inicio,fim){
+  return (Math.floor(Math.random()*(fim - inicio)) + inicio);
+}
+
+function CaracteresAleatorios(){
+   var numeros = "0123456789";
+   var caractereMinusculos = "abcdefghijklmnopqrstuvwxyz";
+   var caractereMaiusculos = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   var caracteresEspecias  = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?"
+   var charSet = ""
+   var number = true
+   var lower = true
+   var upper = true
+   var other = true
+   
+   if (number == true)
+     charSet += numeros;
+   if (lower == true)
+   charSet += caractereMinusculos;
+   if (upper == true)
+   charSet += caractereMaiusculos;
+   if (other == true)
+   charSet += caracteresEspecias;
+     return charSet.charAt(valoresAleatorios(0, charSet.length));
+   }
+   
+
+function geraSenha(){
+  
+  var rc = "";
+  var length = 8
+  if (length > 0)
+  rc = rc + CaracteresAleatorios()
+  for (var idx = 1; idx < length; ++idx) {
+  rc = rc + CaracteresAleatorios()
+  }
+  return document.myform.password.value = rc;
+}
+
+
+</script>
+
+</HEAD>
+<BODY>
+
+<center>
+<table width=80% border=0>
+<tr align=center>
+<td>
+<form name="myform">
+<table border=0>
+<tr>
+<td>
+
+<td>
+Nova senha: 
+<input type=text name=password size=20>
+<br>
+<input type=button value="Gerar Senha" onClick="geraSenha();">
+</form>
+</td>
+</tr>
+</table>
+</center>
